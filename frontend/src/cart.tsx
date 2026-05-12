@@ -17,18 +17,21 @@ export default function Cart() {
     const [cartItems, setCartItems] = useState(cart_items)
 
     const handleQuantityChange = (id: number, newQuantity: number) => {
-        if (newQuantity < 1) return;
+        if (newQuantity < 1) {
+            return;
+        }
 
         setCartItems(prevItems =>
+
             prevItems.map(item =>
                 item.id === id ? {...item, quantity: newQuantity} : item
             )
         );
     }
 
-    const remove = (id: number) => {
-        setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-    };
+    const remove = (id: number) =>
+        setCartItems(prev => prev.filter(item => item.id !== id));
+
     let summa = cartItems.reduce(
         (summa, item) =>  summa + item.price * item.quantity, 0
 
@@ -36,26 +39,28 @@ export default function Cart() {
 
     return(
         <div className="cart">
-            <header className="catalog-header">
-                <Link to="/catalog" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div className="logo">Not-temu</div>
+            <header className="cart-header">
+
+
+                <Link to="/catalog">
+                    <img src = {"icons/logo.jpg"} alt = "not-temu" />
                 </Link>
-                <div className="header-icons">
-                    <span>👤</span>
-                    <span>🛒</span>
-                </div>
             </header>
 
             <main className="cart-main">
                 <h1 className="cart-title">Your cart items</h1>
-                <Link to="/catalog" className="back-link">Back to shopping</Link>
+                <Link to="/catalog" className="back-link">
+                    Back to shopping
+                </Link>
 
                 <div className="cart-table">
                     <div className="cart-table-header">
+
                         <span className="col-product">Product</span>
                         <span className="col-price">Price</span>
                         <span className="col-quantity">Quantity</span>
                         <span className="col-total">Total</span>
+
                     </div>
 
 
@@ -93,15 +98,12 @@ export default function Cart() {
                                         handleQuantityChange(item.id, parseInt(e.target.value) || 1)
                                     }
                                 />
-                                <button
-                                    className= "qty-btn"
-                                    onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                                >
-                                    +
-                                </button>
+                                <button className= "qty-btn" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>+</button>
                             </div>
                         </div>
-                        <span className= "col-total">{ summa = Number((item.price * item.quantity).toFixed(2)) } €</span>
+                        <span className= "col-total">{
+                            summa = Number((item.price * item.quantity).toFixed(2)) } €
+                        </span>
                     </div>
                 ))}
 
@@ -113,7 +115,10 @@ export default function Cart() {
                         </div>
                         <p className= "tax-note" >Tax and shipping cost not included</p>
                     </div>
-                    <button className="checkout-btn">Check-out</button>
+                    <Link to="/checkout" className="checkout-link">
+                        <button className="checkout-btn">Check-out</button>
+                    </Link>
+
                 </div>
             </main>
         </div>

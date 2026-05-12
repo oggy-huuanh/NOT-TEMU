@@ -15,7 +15,8 @@ export default function Catalog() {
     return (
         <div className="catalog">
             <header className="catalog-header">
-                <div className="logo">Not-temu</div>
+                <img src = {"icons/logo.jpg"} alt = "not-temu" />
+
                 <div className="search-bar-container">
                     <span className="search-icon">🔍</span>
                     <input type="text" className="search-input" placeholder="Search" />
@@ -51,7 +52,7 @@ export default function Catalog() {
                                     {item.name}
                                 </h3>
                                 <div className="product-details">
-                                    <span className="stock-status">
+                                    <span className="stock_status">
                                         in stock
                                     </span>
                                     <span className="price">{item.price.toFixed(2)} €</span>

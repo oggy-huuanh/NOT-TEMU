@@ -13,19 +13,21 @@ export default function Login() {
     return (
         <div className="login-container">
             <div className="login-card">
-                <h2>Log in </h2>
-                <h3>Type in account credentials here</h3>
+                <h2>Log in</h2>
+                <h3>Welcome back!</h3>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <input type="email"
                            placeholder="Email"
                            value={email}
                            onChange={(e) => setEmail(e.target.value)}
                            required />
+
                     <input type="password"
                            placeholder="Password"
                            value={password}
                            onChange={(e) => setPassword(e.target.value)}
                            required />
+
                     <button type="submit">Login</button>
                 </form>
                 <p className="register">
@@ -34,7 +36,7 @@ export default function Login() {
 
 
             </div>
-            <div className="hero-text">
+            <div className="herotext">
                 <h1>Epic finds near you</h1>
                 <p>Discover millions of products at unbeatable prices.</p>
             </div>
