@@ -60,7 +60,16 @@ export default function Catalog() {
                                         {item.stockQuantity > 0 ? "in stock" : "out of stock"}
                                     </span>
                                     <span className="price">{item.price.toFixed(2)} €</span>
-                                    <button onClick={() => setCartItems((prev: any[]) => [...prev, {...item, quantity: 1}])}>
+                                    <button onClick={() => setCartItems((prev: any[]) => {
+                                        const existing = prev.find((i: any) => i.id === item.id);
+                                        if (existing) {
+                                            return prev.map((i: any) =>
+                                                i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+                                            );
+                                        } else {
+                                            return [...prev, { ...item, quantity: 1 }];
+                                        }
+                                    })}>
                                         Add to cart
                                     </button>
                                 </div>

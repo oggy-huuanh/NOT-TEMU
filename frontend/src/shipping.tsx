@@ -8,7 +8,8 @@ import { checkout } from "./api";
 export default function Shipping() {
     const { cartItems, setCartItems } = useCart();
     const navigate = useNavigate();
-
+    const total = cartItems.reduce((sum: number, i: any) => sum + i.price * i.quantity, 0);
+/* payment func will be developed in the future */
     const handlePayNow = async () => {
         const user = getUser();
 
@@ -119,19 +120,25 @@ export default function Shipping() {
                     </div>
 
                     <div className="price-lines">
-                        <div className="line">
-                            <span>Subtotal</span>
-                            <span>€ 9.99</span>
-                        </div>
-                        <div className="line">
-                            <span>Shipping</span>
-                            <span>Free Shipping</span>
+                        <div className="price-lines">
+                            {cartItems.map((item: any) => (
+                                <div key={item.id} className="line">
+                                    <span>
+                                        {item.name} x{item.quantity}
+                                    </span>
+                                    <span>
+                                        € {(item.price * item.quantity).toFixed(2)}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
                     <div className="total-line">
                         <span>Total</span>
-                        <span className="total-amt">€ 9.99</span>
+                        <span className="total-amt">
+                            € {total.toFixed(2)}
+                        </span>
                     </div>
                 </aside>
             </div>

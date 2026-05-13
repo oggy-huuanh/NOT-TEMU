@@ -94,7 +94,7 @@ export default function Cart() {
                             </div>
                         </div>
                         <span className= "col-total">{
-                            summa = Number((item.price * item.quantity).toFixed(2)) } €
+                            ((item.price * item.quantity).toFixed(2)) } €
                         </span>
                     </div>
                 ))}
