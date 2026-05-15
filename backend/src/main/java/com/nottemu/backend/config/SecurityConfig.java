@@ -45,7 +45,8 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "http://localhost:3000",
-                "https://oggy-huuanh.github.io"));
+                "https://oggy-huuanh.github.io",
+                "https://slembaby2910.github.io"));
 
         configuration.setAllowedMethods(List.of(
                 "GET",
