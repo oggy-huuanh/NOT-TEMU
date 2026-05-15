@@ -5,12 +5,12 @@ info:
 
 http:
   method: PATCH
-  url: http://localhost:8081/inventory/2
+  url: http://localhost:8081/inventory/4
   body:
     type: json
     data: |-
       {
-        "quantity": 0
+        "quantity": 50
       }
 
 settings:
