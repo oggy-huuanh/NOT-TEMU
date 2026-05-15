@@ -95,7 +95,7 @@ http://localhost:8081
 # Frontend Setup
 
 ## 1. Navigate to Frontend Folder
-depends on your directory but usually it will be at ```powershell frontend ``` folder
+depends on your directory but usually it will be at the ```frontend ``` folder
 
 ---
 
