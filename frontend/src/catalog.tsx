@@ -19,10 +19,16 @@ export default function Catalog() {
 
     const addToCart = (item: any) => {
         setCartItems((prev: any[]) => {
-            const existing = prev.find(i => i.id === item.id);
+            const existing = prev.find((cartItem) => cartItem.id === item.id);
+
             if (existing) {
-                return prev.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i);
+                return prev.map((cartItem) =>
+                    cartItem.id === item.id
+                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                        : cartItem
+                );
             }
+
             return [...prev, { ...item, quantity: 1 }];
         });
     };
@@ -31,6 +37,7 @@ export default function Catalog() {
         <div className="catalog">
             <header className="catalog-header">
                 <img src="icons/logo.jpg" alt="not-temu" />
+
                 <div className="search-bar-container">
                     <span className="search-icon">🔍</span>
                     <input
@@ -63,24 +70,21 @@ export default function Catalog() {
                                 <img
                                     src={item.imageUrl}
                                     alt={item.name}
-                                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
-                                    onError={(e) => (e.currentTarget.style.display = "none")}
+                                    className="product-image"
                                 />
                             </div>
 
                             <div className="product-info">
                                 <h3 className="product-name">{item.name}</h3>
+
                                 <div className="product-details">
                                     <span className="stock_status">
                                         {item.stockQuantity > 0 ? "in stock" : "out of stock"}
                                     </span>
-                                    <span className="price">{item.price.toFixed(2)} €</span>
-                                    <button
-                                        onClick={() => addToCart(item)}
-                                        disabled={item.stockQuantity <= 0}
-                                    >
-                                        Add to cart
-                                    </button>
+
+                                    <span className="price">
+                                        {Number(item.price).toFixed(2)} €
+                                    </span>
                                 </div>
 
                                 <button
