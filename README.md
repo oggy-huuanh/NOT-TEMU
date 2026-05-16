@@ -219,6 +219,7 @@ Huu Anh, Zirou, Khoa, Huu Anh
 * The project currently uses a shared Supabase PostgreSQL database.
 * Environment variables should not be committed to GitHub.
 * Global exception handling and validation are implemented in the backend.
+* The backend app usually takes around 5-10 minutes to deploy (we can only afford Render's free tier)
 
 ---
 
